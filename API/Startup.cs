@@ -39,6 +39,7 @@ namespace API
             services.AddControllers();
             services.AddCors();
             services.AddIdentityServices(_config);
+            services.AddHealthChecks();
 
 
             // services.AddSwaggerGen(c =>
@@ -64,6 +65,7 @@ namespace API
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHealthChecks("/healthchecks");
                 endpoints.MapControllers();
             });
         }
